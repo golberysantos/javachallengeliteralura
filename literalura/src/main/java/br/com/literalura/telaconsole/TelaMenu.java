@@ -1,0 +1,48 @@
+package br.com.literalura.telaconsole;
+
+import java.util.Scanner;
+
+
+public class TelaMenu {
+	
+		
+	public static void exibir() {
+		boolean continuar = true;
+		Scanner ler = new Scanner(System.in);
+		LimparTelaDoConsole.limpar();
+		System.out.println("\n");
+		System.out.println("╔═══════════════════════════════════════════════╗");
+		System.out.println("║ LiterAlura - Challenge Java. By Golbery       ║");
+		System.out.println("╚═══════════════════════════════════════════════╝");
+		System.out.println("╔═══════════════════════════════════════════════╗");
+		System.out.println("║ Escolha o número de sua opção:                ║");
+		System.out.println("║ 1- buscar livro pelo título                   ║");
+		System.out.println("║ 2- listar livros registrados                  ║");
+		System.out.println("║ 3- listar autores registrados                 ║");
+		System.out.println("║ 4- listar autores vivos em um determinado ano ║");
+		System.out.println("║ 5- listar livros em um determinado idioma     ║");		
+		System.out.println("║ 0- sair                                       ║");
+		System.out.println("╚═══════════════════════════════════════════════╝");
+		System.out.println("");
+
+		String opcao = ler.next();
+
+		System.out.println(opcao);
+		switch (opcao) {
+		case "0":
+			System.out.println("SISTEMA FINALIZADO.");
+			continuar=false;
+			break;
+		case "1":
+			System.out.println("1 escolhido");
+			break;
+
+		default:
+			System.out.println("Desculpe. A opção selecionada não existe.");
+			break;
+		}
+		
+		if (continuar) TelaMenu.exibir();		
+
+	}
+}
