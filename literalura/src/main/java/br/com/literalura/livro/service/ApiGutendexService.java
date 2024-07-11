@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class ApiGutendexService {
 	
-	private final static String BASE = "http://www.gutendex.com/books";
+	private final static String BASE = "https://gutendex.com/books/";
 	
 	/**
 	 * Use this to search author names and book titles with given words

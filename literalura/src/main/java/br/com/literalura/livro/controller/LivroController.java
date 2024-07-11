@@ -9,6 +9,6 @@ public class LivroController {
 	public String buscarLivroPeloTituloOuAuthor(String textoDeConsulta) throws IOException, InterruptedException {		
 		ApiGutendexService ags = new ApiGutendexService();
 		return ags.procurar(textoDeConsulta);
-	}	
+	}
 	
 }
