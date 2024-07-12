@@ -16,17 +16,10 @@ import java.util.List;
   "download_count": <number> 
  */
 public record BookDto(
-		int id, 
-		String title, 
-		List<String> subjects, 
-		List<PessoDto> authors,
-		List<PessoDto> translators,
-		List<String> bookshelves,
-		List<String> languages,
-		boolean copyright,
-		String media_type,
-		String formats,
-		int download_count
+		int count,
+		String next,
+		String previous,
+		List<BookResultsDTO> results
 		) {
 
 }

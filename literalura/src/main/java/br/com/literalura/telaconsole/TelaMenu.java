@@ -9,10 +9,9 @@ public class TelaMenu {
 
 	public static void exibir() {
 		boolean continuar = true;
+		String opcao = "";
 		Scanner ler = new Scanner(System.in);
 		LimparTelaDoConsole.limpar();
-		LivroController lc = new LivroController();
-		String txtParaConsulta = "";
 		System.out.println("\n");
 		System.out.println("╔═══════════════════════════════════════════════╗");
 		System.out.println("║ LiterAlura - Challenge Java. By Golbery       ║");
@@ -28,22 +27,17 @@ public class TelaMenu {
 		System.out.println("╚═══════════════════════════════════════════════╝");
 		System.out.println("");
 
-		String opcao = ler.next();
+		opcao = ler.next();
 
 		System.out.println(opcao);
 		try {
 			switch (opcao) {
 			case "0":
 				System.out.println("SISTEMA FINALIZADO.");
-				ler.close();
 				continuar = false;
 				break;
 			case "1":
-				System.out.println("Voçê escolheu a opção 1.");
-				System.out.println("\n Dite o título do livro ou o nome do Autor: ");
-				txtParaConsulta = ler.next();
-				System.out.println(lc.buscarLivroPeloTituloOuAuthor(txtParaConsulta));
-
+				buscarLivroPeloTitulo();
 				break;
 
 			default:
@@ -57,9 +51,20 @@ public class TelaMenu {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 		if (continuar)
 			TelaMenu.exibir();
 
+	}
+
+	private static void buscarLivroPeloTitulo() throws IOException, InterruptedException {
+		String txtParaConsulta = "";
+		Scanner ler = new Scanner(System.in);
+		LivroController lc = new LivroController();
+		System.out.println("Voçê escolheu a opção 1.");
+		System.out.println("\n Dite o título do livro ou o nome do Autor: ");
+		txtParaConsulta = ler.nextLine();
+		System.out.println(lc.buscarLivroPeloTituloOuAuthor(txtParaConsulta));
+		
 	}
 }
