@@ -15,17 +15,17 @@ public class ApiGutendexService {
 	 * **/
 	public String buscar(String search) throws IOException, InterruptedException {
 		String url = BASE+"?search="+search.replace(" ", "%20");
-		System.out.println("Procurando por: "+search+" ...\n");
+		System.out.println("Procurando por Título ou nome do Autor: "+search+" ...\n");
 		ReqHttpClient qhc = new ReqHttpClient(url);
 		return qhc.getJson();
 	}
 	
-	public BookDto renderizarDto(String json) {
+	public ApiGutendexDto renderizarDto(String json) {
 			System.out.println("result json: "+json);
 			Gson gson = new Gson();
 			// returna o objeto Endereco
 			try {
-				return gson.fromJson(json, BookDto.class);
+				return gson.fromJson(json, ApiGutendexDto.class);
 			} catch (JsonSyntaxException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

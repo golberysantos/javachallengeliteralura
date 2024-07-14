@@ -1,7 +1,5 @@
 package br.com.literalura.livro.service;
 
-import java.util.List;
-
 /*
  "id": <number of Project Gutenberg ID>,
   "title": <string>,
@@ -16,10 +14,17 @@ import java.util.List;
   "download_count": <number> 
  */
 public record BookDto(
-		int count,
-		String next,
-		String previous,
-		List<BookResultsDTO> results
+		int id, 
+		String title, 
+		String[] subjects 
+		//List<PessoDto> authors,
+		//List<PessoDto> translators,
+		//List<String> bookshelves,
+		//List<String> languages,
+		//boolean copyright,
+		//String media_type,
+		//String formats,
+		//int download_count
 		) {
 
 }
