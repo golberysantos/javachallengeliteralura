@@ -6,6 +6,7 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.literalura.livro.model.Livro;
+import br.com.literalura.livro.model.repository.ILivroRepository;
 import br.com.literalura.livro.service.ApiGutendexDto;
 import br.com.literalura.livro.service.ApiGutendexService;
 import br.com.literalura.livro.service.LivroService;
@@ -13,7 +14,12 @@ import br.com.literalura.telaconsole.TelaMenu;
 
 public class LivroController {
 	
+	private LivroService livroService;
 
+	@Autowired
+	public LivroService(LivroService livroService) {
+		this.livroService = livroService;
+	}
 	private String buscarLivroPeloTituloOuAuthor(String textoDeConsulta) {
 		String json = "\"Erro. Não foi possível realizar estra operação. Reinicie o sistema e tentenovamente.\"";
 		try {
@@ -28,7 +34,7 @@ public class LivroController {
 					String titulo = agdto.results()[i].title();
 					Livro livro = new Livro();
 					livro.setTitle(titulo);
-					getLivroService().criar(livro);
+					livroRepository().criar(livro);
 				}
 			}
 			return json;
