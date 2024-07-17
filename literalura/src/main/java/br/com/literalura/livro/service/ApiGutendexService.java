@@ -21,7 +21,6 @@ public class ApiGutendexService {
 	}
 	
 	public ApiGutendexDto renderizarDto(String json) {
-			System.out.println("result json: "+json);
 			Gson gson = new Gson();
 			// returna o objeto Endereco
 			try {

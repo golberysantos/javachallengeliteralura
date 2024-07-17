@@ -1,17 +1,11 @@
 package br.com.literalura.telaconsole;
 
-import java.io.IOException;
-import java.util.Scanner;
-
 import org.springframework.stereotype.Controller;
-
-import br.com.literalura.livro.controller.LivroController;
 
 @Controller
 public class TelaMenu {
 
-	public static void exibir() {
-		LimparTelaDoConsole.limpar();
+	public static void exibir() {		
 		System.out.println("\n");
 		System.out.println("╔═══════════════════════════════════════════════╗");
 		System.out.println("║ LiterAlura - Challenge Java. By Golbery       ║");
