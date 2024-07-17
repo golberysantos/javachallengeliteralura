@@ -4,18 +4,22 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
 public class Conexao {
 	
-	private final Environment env;
+	private final Environment env;	
 
+	@Autowired
     public Conexao(Environment env) {
         this.env = env;
     }
-	public void conectar(String[] args) {
+	
+		
+	public void conectar() {		
 		String url = env.getProperty("spring.datasource.url");
         System.out.println("spring.datasource.url: " + url);
 		String jdbcUrl = url;
@@ -28,5 +32,9 @@ public class Conexao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public Environment getEnv() {
+		return env;
 	}
 }
