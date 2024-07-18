@@ -11,16 +11,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class Conexao {
 	
-	private final Environment env;	
-
+	private Environment ENV;	
 	@Autowired
     public Conexao(Environment env) {
-        this.env = env;
+        this.ENV = env;
     }
 	
 		
 	public void conectar() {		
-		String url = env.getProperty("spring.datasource.url");
+		String url = ENV.getProperty("spring.datasource.url");
         System.out.println("spring.datasource.url: " + url);
 		String jdbcUrl = url;
 		String username = "root";
@@ -35,6 +34,6 @@ public class Conexao {
 	}
 	
 	public Environment getEnv() {
-		return env;
+		return ENV;
 	}
 }
