@@ -3,6 +3,7 @@ package br.com.literalura.livro.controller;
 import java.io.IOException;
 import java.util.Scanner;
 
+import br.com.literalura.livro.config.Conexao;
 import br.com.literalura.livro.model.Livro;
 import br.com.literalura.livro.service.ApiGutendexDto;
 import br.com.literalura.livro.service.ApiGutendexService;
@@ -57,6 +58,8 @@ public class LivroController {
 				continuar = false;
 				break;
 			case "1":
+				//Conexao c = new Conexao();
+				//System.out.println("conexao: "+c);
 				buscarLivroPeloTitulo();
 				break;
 

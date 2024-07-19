@@ -1,5 +1,6 @@
 package br.com.literalura.livro.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -94,6 +95,18 @@ public class LivroService implements LivroRepository{
 	public void salvarLivro(Livro livro) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Livro> findByFirstName(String firstName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean updateByFirstName(Long id, String name) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	

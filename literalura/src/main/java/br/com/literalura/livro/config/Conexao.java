@@ -9,16 +9,12 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
-public class Conexao {
+public class Conexao {	
 	
-	private Environment ENV;	
 	@Autowired
-    public Conexao(Environment env) {
-        this.ENV = env;
-    }
+	Environment ENV;
 	
-		
-	public void conectar() {		
+	public Connection conectar() {		
 		String url = ENV.getProperty("spring.datasource.url");
         System.out.println("spring.datasource.url: " + url);
 		String jdbcUrl = url;
@@ -27,13 +23,11 @@ public class Conexao {
 
 		try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password)) {
 			System.out.println("Conexão ao banco de dados bem-sucedida!");
-			
+			return connection;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
-	
-	public Environment getEnv() {
-		return ENV;
-	}
+
 }
