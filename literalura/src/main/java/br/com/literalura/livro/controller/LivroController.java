@@ -18,8 +18,10 @@ public class LivroController {
 	
 	
 	private String buscarLivroPeloTituloOuAuthor(String textoDeConsulta) {
-		LivroService livroService;
+		
 		String json = "\"Erro. Não foi possível realizar estra operação. Reinicie o sistema e tentenovamente.\"";
+		LivroService ls = new LivroService();
+		ls.salvarLivro();
 		try {
 			ApiGutendexService ags = new ApiGutendexService();
 			json = ags.buscar(textoDeConsulta);
@@ -31,7 +33,8 @@ public class LivroController {
 				for (int i = 0; i < agdto.results().length; i++) {
 					String titulo = agdto.results()[i].title();
 					Livro livro = new Livro();
-					livro.setTitle(titulo);					
+					livro.setTitle(titulo);
+					
 				}
 			}
 			return json;

@@ -7,14 +7,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-@Configuration
-@ComponentScan("com.baeldung.jdbc")
+//@Configuration //** habilitar caso queira configurar o banco via class em vez do arquivo 'application.properties'.
+//@ComponentScan("com.baeldung.jdbc") //** habilitar caso queira configurar o banco via class em vez do arquivo 'application.properties'.
 public class SpringJdbcConfig {
-	@Bean
+	//@Bean //** habilitar caso queira configurar o banco via class em vez do arquivo 'application.properties'.
 	public DataSource mysqlDataSource() {
 	DriverManagerDataSource dataSource = new DriverManagerDataSource();
 	dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-	dataSource.setUrl("jdbc:mysql://localhost:3306/springjdbc");
+	dataSource.setUrl("jdbc:mysql://localhost:3306/literalura");
 	dataSource.setUsername("root");
 	dataSource.setPassword("root");
 	return dataSource;

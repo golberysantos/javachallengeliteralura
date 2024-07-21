@@ -12,28 +12,42 @@ import org.springframework.stereotype.Service;
 @Service
 public class Conexao {
 
-	private final Environment ENV;
-
+	private static Environment env;
+	private static Connection connection;
+	
+	public Environment getEnv() {
+		return env;
+	}
+	
 	@Autowired
-    public Conexao(Environment env) {
-        this.ENV = env;
-    }
+	public void setEnv(Environment env) {
+		Conexao.env = env;
+	}
 
 	@Bean
-	public Connection conectar() {
-		String url = ENV.getProperty("spring.datasource.url");
-		System.out.println("spring.datasource.url: " + url);
+	private static Connection conectar() {
+		String url = env.getProperty("spring.datasource.url");		
 		String jdbcUrl = url;
 		String username = "root";
 		String password = "root";
 
 		try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password)) {
-			System.out.println("Conexão ao banco de dados bem-sucedida!");
+			setConnection(connection);
 			return connection;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
+
+	public static Connection getConnection() {
+		return connection;
+	}
+
+	public static void setConnection(Connection connection) {
+		Conexao.connection = connection;
+	}
+
+
 
 }
