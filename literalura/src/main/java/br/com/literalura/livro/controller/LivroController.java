@@ -1,6 +1,7 @@
 package br.com.literalura.livro.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,20 +14,20 @@ import br.com.literalura.livro.service.ApiGutendexService;
 import br.com.literalura.livro.service.LivroService;
 import br.com.literalura.telaconsole.TelaMenu;
 
+public class LivroController {
 
-public class LivroController {	
-	
-	
+	private ApiGutendexDto agdto;
+	private LivroService ls = null;
+
 	private String buscarLivroPeloTituloOuAuthor(String textoDeConsulta) {
-		
+
 		String json = "\"Erro. Não foi possível realizar estra operação. Reinicie o sistema e tentenovamente.\"";
-		LivroService ls = new LivroService();
-		ls.salvarLivro();
 		try {
+
 			ApiGutendexService ags = new ApiGutendexService();
 			json = ags.buscar(textoDeConsulta);
 
-			ApiGutendexDto agdto = ags.renderizarDto(json);
+			agdto = ags.renderizarDto(json);
 			if (agdto.results().length == 0) {
 				json = "Nenhum resultado encoontrado!";
 			} else {
@@ -34,24 +35,31 @@ public class LivroController {
 					String titulo = agdto.results()[i].title();
 					Livro livro = new Livro();
 					livro.setTitle(titulo);
-					
+
+					ls = new LivroService();
+					ls.salvarLivro(livro);
+
 				}
 			}
-			return json;
+
 		} catch (IOException e) {
 			e.printStackTrace();
-			return json;
+
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			return json;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	}	
+		return json;
+	}
 
 	public void escolha() {
 		boolean continuar = true;
 		String opcao = "";
 		Scanner ler = new Scanner(System.in);
-				
+
 		TelaMenu.exibir();
 		opcao = ler.next();
 
@@ -63,8 +71,8 @@ public class LivroController {
 				continuar = false;
 				break;
 			case "1":
-				//Conexao c = new Conexao();
-				//System.out.println("conexao: "+c);
+				// Conexao c = new Conexao();
+				// System.out.println("conexao: "+c);
 				buscarLivroPeloTitulo();
 				break;
 
@@ -95,8 +103,5 @@ public class LivroController {
 		System.out.println("Resultado: " + json);
 
 	}
-	
 
-	
-	
 }
