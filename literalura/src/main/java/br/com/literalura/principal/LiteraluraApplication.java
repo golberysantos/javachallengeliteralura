@@ -12,6 +12,7 @@ import br.com.literalura.livro.controller.LivroController;
 		"br.com.literalura.livro.service", 
 		"br.com.literalura.livro.model.repository",
 		"br.com.literalura.livro.controller",
+		"br.com.literalura.livro.config",
 		"br.com.literalura.livro.model"
 		})
 public class LiteraluraApplication {

@@ -5,18 +5,24 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
-public class Conexao {	
-	
+public class Conexao {
+
+	private final Environment ENV;
+
 	@Autowired
-	Environment ENV;
-	
-	public Connection conectar() {		
+    public Conexao(Environment env) {
+        this.ENV = env;
+    }
+
+	@Bean
+	public Connection conectar() {
 		String url = ENV.getProperty("spring.datasource.url");
-        System.out.println("spring.datasource.url: " + url);
+		System.out.println("spring.datasource.url: " + url);
 		String jdbcUrl = url;
 		String username = "root";
 		String password = "root";

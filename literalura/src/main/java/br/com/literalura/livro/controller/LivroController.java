@@ -3,6 +3,9 @@ package br.com.literalura.livro.controller;
 import java.io.IOException;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+
 import br.com.literalura.livro.config.Conexao;
 import br.com.literalura.livro.model.Livro;
 import br.com.literalura.livro.service.ApiGutendexDto;
@@ -12,7 +15,7 @@ import br.com.literalura.telaconsole.TelaMenu;
 
 
 public class LivroController {	
-
+	
 	
 	private String buscarLivroPeloTituloOuAuthor(String textoDeConsulta) {
 		LivroService livroService;
@@ -28,9 +31,7 @@ public class LivroController {
 				for (int i = 0; i < agdto.results().length; i++) {
 					String titulo = agdto.results()[i].title();
 					Livro livro = new Livro();
-					livro.setTitle(titulo);
-					livroService = new LivroService();
-					livroService.salvarLivro(livro);
+					livro.setTitle(titulo);					
 				}
 			}
 			return json;
@@ -47,6 +48,7 @@ public class LivroController {
 		boolean continuar = true;
 		String opcao = "";
 		Scanner ler = new Scanner(System.in);
+				
 		TelaMenu.exibir();
 		opcao = ler.next();
 
