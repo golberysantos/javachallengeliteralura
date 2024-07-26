@@ -1,16 +1,14 @@
 package br.com.literalura.livro.config;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Service;
 
-@Service
+@Configuration
 public class Conexao {
 
 	private static Environment env;
